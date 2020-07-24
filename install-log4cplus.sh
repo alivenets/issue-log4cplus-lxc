@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+rm -rf log4cplus
 git clone https://github.com/log4cplus/log4cplus.git
 mkdir log4cplus/build
 cd log4cplus/build

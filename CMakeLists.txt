@@ -14,9 +14,6 @@ set(LoggingLibrary_NAME "log4cplus")
 set(LoggingLibrary_LIBRARIES log4cplus::log4cplus)
 set(LoggingLibrary_VERSION ${log4cplus_VERSION})
 
-set(LoggingLibrary_LIBRARIES log4cplus::log4cplus)
-set(LoggingLibrary_VERSION ${log4cplus_VERSION})
-
 add_executable(log4cplus-lxc-issue main.cpp)
 
 # NOTE: Enabled ThreadSanitizer detects the issue

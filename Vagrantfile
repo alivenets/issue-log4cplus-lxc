@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
     config.vm.provision "shell", inline: "sudo apt-get install -y build-essential cmake pkg-config lxc lxc-dev gdb valgrind"
 
     config.vm.provision "shell", inline: "/vagrant/install-log4cplus.sh"
-    
+    config.vm.provision "shell", inline: "sudo apt install -y libspdlog-dev"
+    config.vm.provision "shell", inline: "sudo apt install -y libboost-log-dev"
 end
 
