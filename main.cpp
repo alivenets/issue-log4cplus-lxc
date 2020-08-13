@@ -28,7 +28,7 @@ void tryCreateContainer()
     }
 
     if (container->is_defined(container)) {
-        LOG_ERROR(logger, "ContainerID " << containerID << "' is already in use.");
+        LOG_ERROR(logger, "ContainerID is already in use");
         lxc_container_put(container);
         return;
     }
@@ -36,7 +36,7 @@ void tryCreateContainer()
     LOG_DEBUG(logger, "Successfully created container object");
 
     int flags = 0;
-    std::vector<char *> argv;
+    std::vector<char *> argv{nullptr};
 
     container->set_config_item(container, "lxc.logfile", "/tmp/lxc.log");
     container->set_config_item(container, "lxc.loglevel", "0");
@@ -64,11 +64,16 @@ void tryCreateContainer()
 
     pid_t pid = container->init_pid(container);
 
+    // Execute function in container and log from there
+
     if (!container->stop(container)) {
-        LOG_ERROR(logger, "Container stopped");
+        LOG_ERROR(logger, "Failed to stop container");
     }
 
+    LOG_DEBUG(logger, "Container stopped");
     container->destroy(container);
+    
+    LOG_DEBUG(logger, "Container destroyed");
 
     lxc_container_put(container);
 }
@@ -77,9 +82,9 @@ int main()
 {
     LOG_CONFIGURE();
 
-    auto logger = LOG_GET_LOGGER("main")
+    auto logger = LOG_GET_LOGGER("main");
 
-    LOG_WARN(logger, "Hello, World! " << getpid());
+    LOG_WARN(logger, "Hello, World!");
 
     tryCreateContainer();
 

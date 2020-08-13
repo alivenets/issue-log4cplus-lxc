@@ -3,8 +3,6 @@
 
 #include <spdlog/spdlog.h>
 
-using namespace spdlog;
-
 #define LOG_ERROR(logger,...) spdlog::error(__VA_ARGS__)
 #define LOG_WARN(logger,...) spdlog::warn(__VA_ARGS__)
 #define LOG_INFO(logger,...) spdlog::info(__VA_ARGS__)

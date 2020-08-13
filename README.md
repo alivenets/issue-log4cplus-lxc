@@ -60,6 +60,7 @@ cd /vagrant
 mkdir build
 cd build
 cmake ..
-./log4cplus-lxc-issue
+sudo TSAN_OPTIONS="halt_on_error=1" ./log4cplus-lxc-issue
+sudo valgrind ./log4cplus-lxc-issue
 ```
 

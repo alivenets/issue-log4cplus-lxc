@@ -9,11 +9,11 @@
 #include <log4cplus/logger.h>
 #include <log4cplus/loggingmacros.h>
 
-#define LOG_ERROR(...) LOG4CPLUS_ERROR(__VA_ARGS__)
-#define LOG_WARN(...) LOG4CPLUS_WARN(__VA_ARGS__)
-#define LOG_INFO(...) LOG4CPLUS_INFO(__VA_ARGS__)
-#define LOG_DEBUG(...) LOG4CPLUS_DEBUG(__VA_ARGS__)
-#define LOG_GET_LOGGER(...) log4cplus::Logger::getInstance(__VA_ARGS__)
+#define LOG_ERROR(args...) do { LOG4CPLUS_ERROR(args); } while(0)
+#define LOG_WARN(args...) do { LOG4CPLUS_WARN(args); } while(0)
+#define LOG_INFO(args...) do { LOG4CPLUS_INFO(args); } while(0)
+#define LOG_DEBUG(args...) do { LOG4CPLUS_DEBUG(args); } while(0)
+#define LOG_GET_LOGGER(args...) log4cplus::Logger::getInstance(args)
 #define LOG_CONFIGURE()  log4cplus::Initializer initializer; do { log4cplus::BasicConfigurator::doConfigure(); } while(0)
 
 #endif
